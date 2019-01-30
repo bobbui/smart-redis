@@ -1,0 +1,21 @@
+{
+  "name": "ai-analytics-service",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "nodemon %NODE_DEBUG_OPTION% ./bin/www"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "async-redis": "^1.1.5",
+    "exit-hook": "^2.0.0",
+    "lodash": "^4.17.10",
+    "log4js": "^4.0.1",
+    "ping": "^0.2.2",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+  }
+}
