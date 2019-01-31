@@ -1,11 +1,22 @@
 {
-  "name": "ai-analytics-service",
-  "version": "0.0.0",
-  "private": true,
+  "name": "smart-redis",
+  "version": "0.0.2",
+  "description": "Redis cache which automatically build and refresh itself.",
+  "author": "Bob (Bui Nguyen Thang) <bob.bui at outlook.com>",
+  "keywords": [
+    "redis",
+    "cache",
+    "cluster"
+  ],
+  "homepage": "https://github.com/thangbn/smart-redis",
+  "license": "Apache-2.0",
   "scripts": {
-    "start": "node ./bin/www",
-    "nodemon": "nodemon %NODE_DEBUG_OPTION% ./bin/www"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thangbn/smart-redis.git"
+  },
+  "main": "lib/index",
   "dependencies": {
     "async": "^2.6.1",
     "async-redis": "^1.1.5",
@@ -17,5 +28,8 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "smart-redis": "^0.0.1"
+  },
+  "optionalDependencies": {
   }
 }
