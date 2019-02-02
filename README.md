@@ -12,6 +12,8 @@ If this sounds like your problem then it is exactly what you're looking for.
 2. Zero downtime cache refresh.
 3. Support multiple application instances.
 
+This library has been used in production for few months, but use at your own risk.
+
 ## Usage
 
 ### Install
@@ -76,6 +78,28 @@ cache should be built on the redis:
 
 see **lib/sample.js** for full example.
 
+## API references
+
+1. **CacheBuilder.build(options?): Promise<CacheBuilder>**
+entry point function to create CacheBuilder instance.
+options parameter:
+- redisOption: option to initialize node_redis, see here for full detail: http://redis.js.org/#api-rediscreateclient
+- masterCacheKey: optional prefix for master key, if dont have multiple CacheBuilder instance, you can safely ignore it.
+- logging: optional logging option for debugging purpose
+- logging.enable: whether enable debug logging, default is false
+- logging.logger: customized logger accept log4j and winston instance, default is built-in log4js logger
+
+2. **CacheBuilder.register(options): string**
+function to register a new cache
+options parameter:
+- name: cache builder instance name, if not pass an unique name will be generated, should contains only alphanumeric, _ or -
+- dataFetchingFn: function to fetch data. 'list' data type expects an array, 'hash' data type expects an array of object.
+- cacheKeys: array of key strings,
+- redisDataTypes: array of data type corresponding to the aforementioned array of keys, only ['hash', 'list', 'string'] are supported
+- refreshInterval: interval to refresh,
+- idProp: property name to extract key use for hash data structure  
+Returns: unique cache name will be auto generated if not passed
+
 ## How it work?
 
 smart-redis natively support multi application instances deployment, in order for it to work correctly, each instance has to be deployed in a separated host (VM or docker container)  
@@ -103,5 +127,8 @@ When an application with **smart-redis** start, it will try to become a master i
 - better connection refused error handling
 - add support for custom parameter to the dataFetchingFn function.
 - add support for **set** data type.
-- add validation for hash idProp option.
+- add validation for hash idProp option has to be string
 - encapsulate private function and constructor
+- un-register, update existing cache instance
+- add unit test
+- bug fix: disconnect will render master key monitoring disabled
