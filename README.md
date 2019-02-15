@@ -27,6 +27,7 @@ yarn add smart-redis
 ### init
 
 ```javascript
+const CacheBuilder   = require('smart-redis').CacheBuilder;
 let cacheBuilder = await CacheBuilder.build({
     redisOption: {
         host: 'localhost',
@@ -88,6 +89,7 @@ options parameter:
 - logging: optional logging option for debugging purpose
 - logging.enable: whether enable debug logging, default is false
 - logging.logger: customized logger accept log4j and winston instance, default is built-in log4js logger
+- masterAliveCheck: whether to perform master alive check by ping hostname
 
 2. **CacheBuilder.register(options): string**
 function to register a new cache
@@ -102,7 +104,7 @@ Returns: unique cache name will be auto generated if not passed
 
 ## How it work?
 
-smart-redis natively support multi application instances deployment, in order for it to work correctly, each instance has to be deployed in a separated host (VM or docker container)  
+smart-redis natively support multi application instances deployment
 
 ### Cache building and refreshing
 0. Only master instance can build and refresh cache.
@@ -118,7 +120,7 @@ When an application with **smart-redis** start, it will try to become a master i
 1. If it becomes master: there will be a master key stored in redis pointing to this instance. cache will be built and refreshed from this instance
     - If this instance is terminated (by exit, SIGINT, or SIGTERM signal), it will release it master key.
 2. If it couldn't become master:
-    - it will go to sleep and periodically check for master aliveness:
+    - it will go to sleep and periodically check for master aliveness (if enabled):
         - If master is alive, go to sleep
         - If master is not alive, try to become master.
     - it also listen to master key deletion event. If master key got deleted, all non-master instances will try to become master.
