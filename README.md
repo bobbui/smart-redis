@@ -134,3 +134,4 @@ When an application with **smart-redis** start, it will try to become a master i
 - un-register, update existing cache instance
 - add unit test
 - bug fix: disconnect will render master key monitoring disabled
+- add ES linting
