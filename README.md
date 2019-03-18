@@ -89,7 +89,7 @@ options parameter:
 - logging: optional logging option for debugging purpose
 - logging.enable: whether enable debug logging, default is false
 - logging.logger: customized logger accept log4j and winston instance, default is built-in log4js logger
-- masterAliveCheck: whether to perform master alive check by ping hostname
+- masterAliveCheck: whether to perform master alive check by ping master hostname, only work when application instance running on different machine that can be pinged, do not work inside Kubernetes.
 
 2. **CacheBuilder.register(options): string**
 function to register a new cache
@@ -129,7 +129,6 @@ When an application with **smart-redis** start, it will try to become a master i
 - better connection refused error handling
 - add support for custom parameter to the dataFetchingFn function.
 - add support for **set** data type.
-- add validation for hash idProp option has to be string
 - encapsulate private function and constructor
 - un-register, update existing cache instance
 - add unit test

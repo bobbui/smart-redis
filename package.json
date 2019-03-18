@@ -1,6 +1,6 @@
 {
   "name": "smart-redis",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Redis cache which automatically build and refresh itself.",
   "author": "Bob (Bui Nguyen Thang) <bob.bui at outlook.com>",
   "keywords": [
@@ -28,7 +28,9 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "smart-redis": "^0.0.4"
+    "smart-redis": "^0.0.7",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint": "^5.15.2"
   },
   "optionalDependencies": {
   }
