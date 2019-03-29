@@ -1,6 +1,6 @@
 {
   "name": "smart-redis",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Redis cache which automatically build and refresh itself.",
   "author": "Bob (Bui Nguyen Thang) <bob.bui at outlook.com>",
   "keywords": [
