@@ -3,7 +3,7 @@
 Redis cache which automatically build and refresh itself.
 
 ## Motivation
-There is data which take really long time to fetch from sources (e.g: reporting query, analytics query) but user need fast response time and always be available. The solution is to create a cache that can build and refresh itself in the background.
+There is data which take really long time to fetch from sources (e.g: reporting query, analytics query) but user need fast response time and result to be always be available. The solution is to create a cache that can build and refresh itself in the background.
 
 If this sounds like your problem then it is exactly what you're looking for.
 
